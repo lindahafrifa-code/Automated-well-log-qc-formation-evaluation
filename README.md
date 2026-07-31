@@ -49,47 +49,23 @@ Not all 7 are independent measurements. The notebook checks every pair against e
 
 ```mermaid
 flowchart TD
-    A[Load LAS file] --> B[Preserve raw data: raw_df vs. qc_df]
-    B --> C[Confirm well info & depth continuity]
-    C --> D[Inventory the curves, units & coverage]
-    D --> E[Screen numerical ranges & local spikes]
+    A[Load LAS file] --> B[make a copy of raw log: raw_df vs. qc_df]
+    B --> C[Check well info & depth continuity]
+    C --> D[Catalogue the curves, units & coverage]
+    D --> E[Screen ranges & local spikes]
     E --> F[Borehole condition & density reliability]
-    F --> G[Density-neutron QC diagnostic]
+    F --> G[Density-neutron qc diagnostic]
     G --> H[Resistivity curve comparison]
     H --> I[Flag interpretation-ready rows]
-    I --> J[Export QC results & summary]
+    I --> J[Export qc results & summary]
 ```
 
-I directed the petrophysics and clarified what mattered, what each threshold should be and why, and what a passing or failing flag should mean, as outlined in the section above. Claude (Anthropic) wrote the Python code implementing that logic, which significantly accelerated the build compared to writing and debugging it by hand.
-
-Every result was checked against the real well data afterward. When reviewing the generated code, a function like (`make_nullable_boolean_flag`) was defined twice across two separate cells, and two variables left over from earlier revisions were no longer used anywhere. Both were removed, and the notebook was re-run to confirm the QC conclusions were unchanged.
-
-Operators across the Norwegian Continental Shelf (NCS), like Aker BP, Equinor, and Var energi, have become increasingly open about embedding AI directly into subsurface workflows. 
+I supervised the petrophysics and clarified what mattered, what each measured threshold should be and why, and what a passing or failing flag should mean, as outlined in the section above. Claude (Anthropic) wrote the Python code implementing that logic, which was faster than building and debugging it manually.
+Every result was checked against the actual well data. This flagged functions such as “make_nullable_boolean_flag” that were defined twice in separate cells, as well as two variables from earlier revisions that were no longer used anywhere. 
+These errors were corrected, and the notebook was re-run each time to confirm that the qc conclusions remained unchanged.
+The energy industry has become increasingly open to embedding AI directly into subsurface workflows, for example, among companies on the Norwegian Continental Shelf (NCS). 
 This project reflects the same line: AI accelerates implementation, while the petrophysical judgment behind it remains human and accountable.
 
-
-
-
-
-
-
-
-
-
-I directed the petrophysics: which checks mattered, what each threshold 
-should be and why, and what a passing or failing flag should actually 
-mean. Claude (Anthropic) wrote the Python implementing that logic, which 
-sped up the build considerably compared to writing and debugging it by 
-hand. Every result was checked against the real well data afterward, not 
-accepted on trust. When the generated code carried leftover duplication 
-from earlier revisions, it was reviewed and removed, then the notebook was 
-re-run to confirm the QC conclusions hadn't changed.
-
-Operators across the Norwegian Continental Shelf, including Aker BP, have 
-been increasingly public about building AI directly into subsurface 
-workflows. This project reflects that same approach: AI accelerating the 
-implementation, while the petrophysical judgement behind it stays 
-человеческое and accountable.
 
 ## Results
 
