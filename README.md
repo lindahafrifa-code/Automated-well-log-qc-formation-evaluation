@@ -1,6 +1,6 @@
 # Volve Well-Log QC and Formation Evaluation
 
-## What this repo is
+## What this is
 A Python workflow that checks whether well-log measurements from a real North Sea well can be trusted, before any rock or fluid property is calculated.
 Built on Equinor's open Volve dataset, well 15/9-F-1.
 Petrophysics has a simple rule that should be followed before every composite file and interpretation. Before you calculate porosity or water saturation, you must know whether the measurement you're using is reliable. 
@@ -8,7 +8,7 @@ Factors like: - washed-out borehole, - poor density correction, - mud additive c
 
 This notebook performs that check properly and shows its work at every stage.
 
-## Why this exists
+## Why 
 During my MSc thesis (reservoir characterization of the Nise Formation, NTNU), I relied heavily on the petrophysical interpretation (IP) of the 4 wells.
 There was very little study of the Nise Formation on the Eastern Norwegian Continental Shelf (NCS), especially in the Halten Terrace area. With little published work on the Nise Formation in this area to use as an established reference, I had to cross-validate my interpretation across the 4 wells. This meant getting it exactly right and required extensive QC on the 1982 to 1996 vintage wells in IP.
 
@@ -16,7 +16,7 @@ This was a manual task that took a long time to complete, with lots of note-taki
 This notebook automates the same checking process across an entire well in seconds instead of hours and keeps every flag attached to the data without deleting anything. This approach ensures that the reasoning remains visible and checkable afterward by the petrophysicist
 
 
-## What gets checked, and why those specific numbers
+## What gets flagged, and why
 Every check and threshold in this notebook is chosen for a physical reason, not arbitrarily. The main ones:
 
 
@@ -45,9 +45,36 @@ Logs RPCEHM and RT, for example, correlate at 1.000, an exact match.
 Not all 7 are independent measurements. The notebook checks every pair against each other to prevent the same signal from being mistaken for 6 separate pieces of evidence.
 
 
+## How and the Workflow
+
+```mermaid
+flowchart TD
+    A[Load LAS file] --> B[Preserve raw data: raw_df vs. qc_df]
+    B --> C[Confirm well info & depth continuity]
+    C --> D[Inventory the curves, units & coverage]
+    D --> E[Screen numerical ranges & local spikes]
+    E --> F[Borehole condition & density reliability]
+    F --> G[Density-neutron QC diagnostic]
+    G --> H[Resistivity curve comparison]
+    H --> I[Flag interpretation-ready rows]
+    I --> J[Export QC results & summary]
+```
+
+I directed the petrophysics and clarified what mattered, what each threshold should be and why, and what a passing or failing flag should mean, as outlined in the section above. Claude (Anthropic) wrote the Python code implementing that logic, which significantly accelerated the build compared to writing and debugging it by hand.
+
+Every result was checked against the real well data afterward. When reviewing the generated code, a function like (`make_nullable_boolean_flag`) was defined twice across two separate cells, and two variables left over from earlier revisions were no longer used anywhere. Both were removed, and the notebook was re-run to confirm the QC conclusions were unchanged.
+
+Operators across the Norwegian Continental Shelf (NCS), like Aker BP, Equinor, and Var energi, have become increasingly open about embedding AI directly into subsurface workflows. 
+This project reflects the same line: AI accelerates implementation, while the petrophysical judgment behind it remains human and accountable.
 
 
-## How this was built
+
+
+
+
+
+
+
 
 I directed the petrophysics: which checks mattered, what each threshold 
 should be and why, and what a passing or failing flag should actually 
