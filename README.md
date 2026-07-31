@@ -45,7 +45,7 @@ Logs RPCEHM and RT, for example, correlate at 1.000, an exact match.
 Not all 7 are independent measurements. The notebook checks every pair against each other to prevent the same signal from being mistaken for 6 separate pieces of evidence.
 
 
-## How and the Workflow
+## How 
 
 ```mermaid
 flowchart TD
