@@ -45,7 +45,7 @@ Logs RPCEHM and RT, for example, correlate at 1.000, an exact match.
 Not all 7 are independent measurements. The notebook checks every pair against each other to prevent the same signal from being mistaken for 6 separate pieces of evidence.
 
 
-## How 
+## How (Workflow)
 
 ```mermaid
 flowchart TD
@@ -59,8 +59,12 @@ flowchart TD
     H --> I[Flag interpretation-ready rows]
     I --> J[Export qc results & summary]
 ```
+Workflow 
 
-I supervised the petrophysics and clarified what mattered, what each measured threshold should be and why, and what a passing or failing flag should mean, as outlined in the section above. Claude (Anthropic) wrote the Python code implementing that logic, which was faster than building and debugging it manually.
+I supervised the petrophysics and clarified what mattered, what each measured threshold should be and why, and what a passing or failing flag should mean, as outlined in the section above. 
+
+Claude (Anthropic) wrote the Python code implementing that logic, which was faster than building and debugging it manually.
+
 Every result was checked against the actual well data. This flagged functions such as “make_nullable_boolean_flag” that were defined twice in separate cells, as well as two variables from earlier revisions that were no longer used anywhere. 
 These errors were corrected, and the notebook was re-run each time to confirm that the qc conclusions remained unchanged.
 The energy industry has become increasingly open to embedding AI directly into subsurface workflows, for example, among companies on the Norwegian Continental Shelf (NCS). 
