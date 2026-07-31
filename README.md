@@ -8,6 +8,13 @@ Factors like: - washed-out borehole, - poor density correction, - mud additive c
 
 This notebook performs that check properly and shows its work at every stage.
 
+## Headline
+
+- 10,007 of 34,861 log readings passed full QC and are flagged interpretation-ready (2,605-3,606.7 m having the needed logs and qc).
+- Every threshold is grounded in petrophysics literature or stated reasoning, not some arbitrary cutoffs.
+- Built with AI-assisted coding; reviewed and corrected the generated code myself, including catching a duplicated function and two dead variables.
+
+
 ## Why 
 During my MSc thesis (reservoir characterization of the Nise Formation, NTNU), I relied heavily on the petrophysical interpretation (IP) of the 4 wells.
 There was very little study of the Nise Formation on the Eastern Norwegian Continental Shelf (NCS), especially in the Halten Terrace area. With little published work on the Nise Formation in this area to use as an established reference, I had to cross-validate my interpretation across the 4 wells. This meant getting it exactly right and required extensive QC on the 1982 to 1996 vintage wells in IP.
