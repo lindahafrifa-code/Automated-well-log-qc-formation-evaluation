@@ -1,0 +1,22 @@
+RAW_MNEMONIC,ACTUAL_UNIT,EXPECTED_UNIT,UNIT_QC_STATUS
+DEPTH,M,m,Matches expected unit
+ABDCQF01,g/cm3,,Not assessed
+ABDCQF02,g/cm3,,Not assessed
+ABDCQF03,g/cm3,,Not assessed
+ABDCQF04,g/cm3,,Not assessed
+BS,inches,inches,Matches expected unit
+CALI,inches,inches,Matches expected unit
+DRHO,g/cm3,g/cm3,Matches expected unit
+DT,us/ft,us/ft,Matches expected unit
+GR,API,API,Matches expected unit
+NPHI,v/v,v/v,Matches expected unit
+PEF,b/elec,b/elec,Matches expected unit
+RACEHM,ohm.m,ohm.m,Matches expected unit
+RACELM,ohm.m,ohm.m,Matches expected unit
+RD,ohm.m,ohm.m,Matches expected unit
+RHOB,g/cm3,g/cm3,Matches expected unit
+RM,ohm.m,ohm.m,Matches expected unit
+ROP,m/hr,m/hr,Matches expected unit
+RPCEHM,ohm.m,ohm.m,Matches expected unit
+RPCELM,ohm.m,ohm.m,Matches expected unit
+RT,ohm.m,ohm.m,Matches expected unit

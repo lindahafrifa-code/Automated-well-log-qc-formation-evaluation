@@ -1,0 +1,4 @@
+CHECK,PASSED
+Raw row count unchanged,True
+Raw column names unchanged,True
+QC dataframe retains all raw rows,True

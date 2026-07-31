@@ -1,0 +1,6 @@
+HARD_CHECK,FLAGGED_ROWS
+Missing depth,0
+Duplicate-depth rows,0
+Non-increasing depth,0
+Non-positive resistivity,0
+Other common sentinel codes still present,0

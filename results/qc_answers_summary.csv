@@ -1,0 +1,9 @@
+QUESTION,ANSWER
+What curves are available?,"21 curves/columns loaded. See curve_inventory_and_coverage.csv for names, units and roles."
+At what depths are they available?,Each curve's first and last valid depth is reported in the curve-coverage table.
+Are there missing values?,"Internal gaps occur in: GR, RACEHM, RACELM, RD, RM, ROP, RPCEHM, RPCELM, RT."
+Is the borehole enlarged?,0 rows are enlarged-hole candidates; 0 are moderate under-gauge candidates; and 96 have a major CALI–BS mismatch.
+Can the density measurement be trusted?,"10,028 density rows passed full QC; 11 are caution; 0 have a strong concern."
+Are density–neutron anomalies geological or caused by poor borehole conditions?,The crossplot separates borehole/density-QC concerns from passed-QC points. Passed-QC anomalies remain geological or fluid candidates for Notebook 2; QC alone cannot prove gas.
+Which resistivity curves duplicate one another?,RPCEHM and RT (exact duplicate); RD and RPCELM (near duplicate); RM and RPCEHM (effectively the same response); RM and RT (effectively the same response)
+Which rows are suitable for later interpretation?,"10,007 rows are interpretation ready, spanning 2605.0–3606.7 m."

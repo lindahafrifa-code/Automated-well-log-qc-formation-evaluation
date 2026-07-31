@@ -1,0 +1,9 @@
+MEASURE,VALUE
+Total LAS rows,34861.0
+"Rows with GR, RHOB, NPHI and RT",10018.0
+First depth with all four required curves (m),2605.0
+Last depth with all four required curves (m),3606.7
+Rows that are calculation candidates,10018.0
+Rows passing the interpretation-ready screen,10007.0
+First interpretation-ready depth (m),2605.0
+Last interpretation-ready depth (m),3606.7

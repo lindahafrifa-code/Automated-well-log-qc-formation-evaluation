@@ -1,0 +1,22 @@
+RAW_MNEMONIC,UNIT,HEADER_DESCRIPTION,PLAIN_ENGLISH_NAME,PROJECT_ROLE,LOG_GROUP,USE_IN_NOTEBOOK_1,EXPECTED_UNIT,UNIT_QC_STATUS,VALID_SAMPLES,FULL_FILE_MISSING_PERCENT,FIRST_VALID_DEPTH_M,LAST_VALID_DEPTH_M,LOGGED_INTERVAL_SAMPLES,INTERNAL_MISSING_COUNT,INTERNAL_MISSING_PERCENT
+DEPTH,M,0  Depth,Measured depth,Depth reference,Depth,Yes,m,Matches expected unit,34861,0.0,145.9,3631.9,34861,0,0.0
+ABDCQF01,g/cm3,v1,Unresolved density-unit composite curve,Preserve; exact metadata not supplied,Unresolved metadata,No,,Not assessed,9676,72.24,2642.0,3609.5,9676,0,0.0
+ABDCQF02,g/cm3,v1,Unresolved density-unit composite curve,Preserve; exact metadata not supplied,Unresolved metadata,No,,Not assessed,9676,72.24,2642.0,3609.5,9676,0,0.0
+ABDCQF03,g/cm3,v1,Unresolved density-unit composite curve,Preserve; exact metadata not supplied,Unresolved metadata,No,,Not assessed,9676,72.24,2642.0,3609.5,9676,0,0.0
+ABDCQF04,g/cm3,v1,Unresolved density-unit composite curve,Preserve; exact metadata not supplied,Unresolved metadata,No,,Not assessed,9676,72.24,2642.0,3609.5,9676,0,0.0
+BS,inches,v1,Bit size,Expected drilled-hole diameter,Borehole QC,Yes,inches,Matches expected unit,34861,0.0,145.9,3631.9,34861,0,0.0
+CALI,inches,v1,Caliper,Measured borehole diameter,Borehole QC,Yes,inches,Matches expected unit,10135,70.93,2595.4,3608.8,10135,0,0.0
+DRHO,g/cm3,v1,Density correction,Supporting check on RHOB reliability,Density QC,Yes,g/cm3,Matches expected unit,10142,70.91,2595.4,3609.5,10142,0,0.0
+DT,us/ft,v1,Compressional sonic slowness,Supporting rock-property curve,Supporting log,Yes,us/ft,Matches expected unit,9822,71.83,2616.8,3598.9,9822,0,0.0
+GR,API,v1,Gamma ray,Later shale-volume input and broad curve QC,Primary interpretation,Yes,API,Matches expected unit,34169,1.99,197.9,3624.2,34264,95,0.277
+NPHI,v/v,v1,Neutron porosity,Later porosity and density–neutron analysis,Primary interpretation,Yes,v/v,Matches expected unit,10018,71.26,2605.0,3606.7,10018,0,0.0
+PEF,b/elec,v1,Photoelectric factor,Supporting lithology curve,Supporting log,Yes,b/elec,Matches expected unit,10469,69.97,2562.7,3609.5,10469,0,0.0
+RACEHM,ohm.m,v1,Composite resistivity candidate,Resistivity comparison and QC,Resistivity comparison,Yes,ohm.m,Matches expected unit,33810,3.01,215.9,3623.0,34072,262,0.769
+RACELM,ohm.m,v1,Composite resistivity candidate,Resistivity comparison and QC,Resistivity comparison,Yes,ohm.m,Matches expected unit,33810,3.01,215.9,3623.0,34072,262,0.769
+RD,ohm.m,v1,Additional composite resistivity,Resistivity comparison and QC,Resistivity comparison,Yes,ohm.m,Matches expected unit,33709,3.3,226.0,3623.0,33971,262,0.771
+RHOB,g/cm3,v1,Bulk density,Later density-porosity input,Primary interpretation,Yes,g/cm3,Matches expected unit,10046,71.18,2605.0,3609.5,10046,0,0.0
+RM,ohm.m,v1,Additional composite resistivity,Resistivity comparison and QC,Resistivity comparison,Yes,ohm.m,Matches expected unit,33709,3.3,226.0,3623.0,33971,262,0.771
+ROP,m/hr,v1,Rate of penetration,Supporting drilling-response curve,Supporting log,Optional,m/hr,Matches expected unit,34055,2.31,223.2,3631.9,34088,33,0.097
+RPCEHM,ohm.m,v1,Composite resistivity candidate,Resistivity comparison and QC,Resistivity comparison,Yes,ohm.m,Matches expected unit,33810,3.01,215.9,3623.0,34072,262,0.769
+RPCELM,ohm.m,v1,Composite resistivity candidate,Resistivity comparison and QC,Resistivity comparison,Yes,ohm.m,Matches expected unit,33810,3.01,215.9,3623.0,34072,262,0.769
+RT,ohm.m,v1,Composite resistivity,Primary later saturation input,Primary interpretation,Yes,ohm.m,Matches expected unit,33810,3.01,215.9,3623.0,34072,262,0.769

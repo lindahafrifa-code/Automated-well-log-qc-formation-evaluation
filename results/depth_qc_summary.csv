@@ -1,0 +1,6 @@
+CHECK,RESULT
+Expected depth step,0.1000 m
+Missing depth values,0
+Rows involved in duplicate depths,0
+Non-increasing depth rows,0
+Unexpected positive depth steps,0

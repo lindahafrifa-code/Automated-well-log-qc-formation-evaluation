@@ -1,0 +1,8 @@
+ITEM,STATUS,QC_IMPLICATION
+Exact logging-tool models,Not fully defined in LAS header,Tool-specific corrections cannot be reproduced
+Mud type,Not defined in LAS header,"Mud effects on GR, NPHI, density and PEF cannot be fully quantified"
+Mud density,Not defined in LAS header,Radiation attenuation cannot be quantified
+Barite presence,Unknown,PEF reliability cannot be fully certified
+Environmental-correction history,Composite curves supplied; full correction history unavailable,Supplied curves are assessed rather than re-corrected
+Investigation depth of each resistivity curve,Not fully defined,Deep and shallow labels cannot be assigned confidently
+Independent source-run depth matching,Composite file appears matched; raw runs unavailable,Independent run-to-run depth matching cannot be verified

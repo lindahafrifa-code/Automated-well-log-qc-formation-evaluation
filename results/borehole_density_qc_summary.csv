@@ -1,0 +1,13 @@
+QC_RESULT,VALUE
+Rows where borehole QC can be evaluated,10135.0
+Rows approximately on gauge,10039.0
+Rows flagged as enlarged-hole candidates,0.0
+Rows flagged as moderate under-gauge candidates,0.0
+Rows with a major CALI–BS mismatch,96.0
+Maximum positive hole enlargement (inches),0.3125
+Rows with DRHO in the caution range,20.0
+Rows with DRHO in the strong-concern range,0.0
+Density samples that passed full QC,10028.0
+Density samples classed as caution,11.0
+Density samples with a strong QC concern,0.0
+Density samples with limited supporting QC,7.0
