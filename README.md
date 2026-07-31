@@ -61,7 +61,7 @@ flowchart TD
 ```
             Simple Workflow 
 
-I supervised the petrophysics and clarified what mattered, what each measured threshold should be and why, and what a passing or failing flag should mean, as outlined in the section above. 
+I supervised the petrophysics and clarified what mattered, what each measured threshold should be and why, and what a passing or failing qc flag should mean, as outlined in the section above. 
 
 Claude (Anthropic) wrote the Python code implementing that logic, which was faster than building and debugging it manually.
 
