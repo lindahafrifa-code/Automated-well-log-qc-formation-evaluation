@@ -59,7 +59,7 @@ flowchart TD
     H --> I[Flag interpretation-ready rows]
     I --> J[Export qc results & summary]
 ```
-            Simple Workflow 
+            A Simple Workflow 
 
 I supervised the petrophysics and clarified what mattered, what each measured threshold should be and why, and what a passing or failing qc flag should mean, as outlined in the section above. 
 
@@ -73,9 +73,8 @@ This project reflects the same line: AI accelerates implementation, while the pe
 
 ## Results
 
-10,007 of 34,861 depth rows passed full QC and are marked 
-interpretation-ready, spanning 2,605 to 3,606.7 metres. Every other row 
-still carries its original data; nothing was deleted, only flagged.
+10,007 of 34,861 depth rows passed full QC and are marked interpretation-ready. The 10,007 rows span 2,605 to 3,606.7 metres. 
+Every other row carries its original data; nothing was deleted, only flagged for visualization.
 
 ## Data
 
