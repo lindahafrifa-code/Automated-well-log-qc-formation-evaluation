@@ -39,27 +39,13 @@ Even a small amount in the mudcake changes the rock signal. Naturally occurring 
 The mud system used in this well is not documented in the file. To avoid guessing, this notebook flags any PEF reading above 10 b/e, a level no common clean reservoir lithology reaches on its own. This flag exists specifically to compensate for not knowing the mud type, not to diagnose the cause.
 
 
+**Resistivity curve duplication.**
+The file contains 7 resistivity-labeled logs. Several are repeated or nearly identical outputs from the same induction tool measured at different borehole distances. 
+Logs RPCEHM and RT, for example, correlate at 1.000, an exact match.
+Not all 7 are independent measurements. The notebook checks every pair against each other to prevent the same signal from being mistaken for 6 separate pieces of evidence.
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-**Resistivity curve duplication.** The file contains seven different 
-resistivity-labelled curves. Several turn out to be repeated or 
-near-identical outputs from the same induction tool measured at different 
-distances from the borehole, rather than independent measurements. The 
-notebook checks every pair against each other so the same signal doesn't 
-get mistaken for six pieces of separate evidence.
 
 ## How this was built
 
