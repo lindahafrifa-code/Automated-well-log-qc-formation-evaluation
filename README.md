@@ -59,7 +59,7 @@ flowchart TD
     H --> I[Flag interpretation-ready rows]
     I --> J[Export qc results & summary]
 ```
-Workflow 
+            Simple Workflow 
 
 I supervised the petrophysics and clarified what mattered, what each measured threshold should be and why, and what a passing or failing flag should mean, as outlined in the section above. 
 
