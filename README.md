@@ -21,19 +21,20 @@ keeps every warning attached to the original data and produces interpretation-re
 | Curves loaded | 21 |
 | Rows containing GR, RHOB, NPHI and RT | 10,018 |
 | Rows marked interpretation-ready | 10,007 |
-| Interpretation-ready interval | 2,605.0–3,606.7 m |
+| Interpretation-ready interval | 2,605.0 - 3,606.7 m |
 | Density rows passing full QC | 10,028 |
 | Density rows requiring caution | 11 |
 | Strong density-QC concerns | 0 |
 | Major CALI–BS mismatch rows | 96 |
 
-No raw measurements were deleted. Rows outside the interpretation-ready set remain in the QC output with their original values and review flags.
+No raw measurements were deleted. 
+Rows outside the interpretation-ready set remain in the QC output with their original values and review flags.
 
 ## What the workflow checks
 
 - **Well and depth integrity:** confirms the well information, depth order, sampling interval, duplicate depths and unexpected depth gaps.
 - **Curve inventory and coverage:** records each mnemonic, unit, valid depth range and missing gaps inside the logged interval.
-- **Numerical screening:** separates hard validity problems from unusual values that require review.
+- **Numerical screening:** separates hard validity problems; like resistivity is 0 or negative, and missing depths, from unusual values that require review (like very high gamma ray).
 - **Borehole condition:** compares caliper (`CALI`) with nominal bit size (`BS`) to identify approximately on-gauge, enlarged, under-gauge and major mismatch intervals.
 - **Density reliability:** combines borehole condition, bulk-density correction (`DRHO`) and `RHOB` screening.
 - **Density–neutron consistency:** separates passed-QC points from measurements affected by borehole or density concerns before any gas or lithology interpretation.
