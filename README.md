@@ -34,7 +34,9 @@ This notebook sets a stricter caution threshold at 0.10 g/cm3, with 0.15 g/cm3 i
 
 **Photoelectric factor (PEF).**
 PEF identifies rock type almost independently of porosity, making it useful for lithology. But it is just as sensitive to borehole contact as density. 
-PEF has one more weakness: barite, a common heavy mud additive, has a photoelectric factor of roughly 267, compared with about 1.8 for quartz, 5 for calcite, and 3 for dolomite. Even a small amount in the mudcake overwhelms the rock signal. The mud system used in this well is not documented in the file. To avoid guessing, this notebook flags any PEF reading above 10 b/e, a level no common clean reservoir lithology reaches on its own. This flag exists specifically to compensate for not knowing the mud type, not to diagnose the cause.
+PEF has one more weakness: barite, a common heavy mud additive, has a photoelectric factor of roughly 267, compared with about 1.8 for quartz, 5 for calcite, and 3 for dolomite. 
+Even a small amount in the mudcake changes the rock signal. Naturally occurring heavy minerals like pyrite or siderite can push PEF higher too.
+The mud system used in this well is not documented in the file. To avoid guessing, this notebook flags any PEF reading above 10 b/e, a level no common clean reservoir lithology reaches on its own. This flag exists specifically to compensate for not knowing the mud type, not to diagnose the cause.
 
 
 
