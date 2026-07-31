@@ -7,10 +7,11 @@ before calculating porosity, water saturation, reservoir quality or pay.
 
 ## Why this project matters
 
-A correct petrophysical equation can still produce a wrong answer when the input logs are affected by 
-missing data, poor borehole conditions, large density corrections or duplicated measurements.
+A correct petrophysical equation can still produce a wrong answer when the input logs are affected by missing data, poor borehole conditions, large density corrections or duplicated measurements.
 
-During my MSc reservoir-characterisation work at NTNU, much of this QC was performed manually in Interactive Petrophysics. This project converts that experience into a transparent Python workflow that reviews an entire well, keeps every warning attached to the original data and produces interpretation-ready inputs for the next stage.
+During my MSc reservoir-characterization and flow simulation work at NTNU, much of this QC was performed manually in Interactive Petrophysics. 
+This project converts that experience into a transparent Python workflow that reviews an entire well, 
+keeps every warning attached to the original data and produces interpretation-ready inputs for the next stage.
 
 ## Key results
 
