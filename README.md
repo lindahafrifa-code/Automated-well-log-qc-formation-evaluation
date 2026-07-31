@@ -1,93 +1,128 @@
-# Volve Well-Log QC and Formation Evaluation
+# Automated Well-Log QC in Python
 
-## What this is
-A Python workflow that checks whether well-log measurements from a real North Sea well can be trusted, before any rock or fluid property is calculated.
-Built on Equinor's open Volve dataset, well 15/9-F-1.
-Petrophysics has a simple rule that should be followed before every composite file and interpretation. Before you calculate porosity or water saturation, you must know whether the measurement you're using is reliable. 
-Factors like: - washed-out borehole, - poor density correction, - mud additive contaminating a reading: will quietly feed wrong numbers into a correct formula. 
+**Volve field, well 15/9-F-1 | Open North Sea data**
 
-This notebook performs that check properly and shows its work at every stage.
+A reproducible Python workflow that checks whether well-log measurements are reliable enough for petrophysical interpretation
+before calculating porosity, water saturation, reservoir quality or pay.
 
-## Headline
+## Why this project matters
 
-- 10,007 of 34,861 log readings passed full QC and are flagged interpretation-ready (2,605-3,606.7 m having the needed logs and qc).
-- Every threshold is grounded in petrophysics literature or stated reasoning, not some arbitrary cutoffs.
-- Built with AI-assisted coding; reviewed and corrected the generated code myself, including catching a duplicated function and two dead variables.
+A correct petrophysical equation can still produce a wrong answer when the input logs are affected by 
+missing data, poor borehole conditions, large density corrections or duplicated measurements.
 
+During my MSc reservoir-characterisation work at NTNU, much of this QC was performed manually in Interactive Petrophysics. This project converts that experience into a transparent Python workflow that reviews an entire well, keeps every warning attached to the original data and produces interpretation-ready inputs for the next stage.
 
-## Why 
-During my MSc thesis (reservoir characterization of the Nise Formation, NTNU), I relied heavily on the petrophysical interpretation (IP) of the 4 wells.
-There was very little study of the Nise Formation on the Eastern Norwegian Continental Shelf (NCS), especially in the Halten Terrace area. With little published work on the Nise Formation in this area to use as an established reference, I had to cross-validate my interpretation across the 4 wells. This meant getting it exactly right and required extensive QC on the 1982 to 1996 vintage wells in IP.
+## Key results
 
-This was a manual task that took a long time to complete, with lots of note-taking and some visual strain. The log QC was something I did by hand: scroll through each curve, compare caliper against bit size by eye, check density correction curves one depth at a time, and flag anything that looked wrong. It works, but it is slow, and it is easy to miss a flag buried among tens of thousands of depth points in a long well.
-This notebook automates the same checking process across an entire well in seconds instead of hours and keeps every flag attached to the data without deleting anything. This approach ensures that the reasoning remains visible and checkable afterward by the petrophysicist
+| Result | Value |
+|---|---:|
+| Raw depth rows preserved | 34,861 |
+| Curves loaded | 21 |
+| Rows containing GR, RHOB, NPHI and RT | 10,018 |
+| Rows marked interpretation-ready | 10,007 |
+| Interpretation-ready interval | 2,605.0–3,606.7 m |
+| Density rows passing full QC | 10,028 |
+| Density rows requiring caution | 11 |
+| Strong density-QC concerns | 0 |
+| Major CALI–BS mismatch rows | 96 |
 
+No raw measurements were deleted. Rows outside the interpretation-ready set remain in the QC output with their original values and review flags.
 
-## What gets flagged, and why
-Every check and threshold in this notebook is chosen for a physical reason, not arbitrarily. The main ones:
+## What the workflow checks
 
+- **Well and depth integrity:** confirms the well information, depth order, sampling interval, duplicate depths and unexpected depth gaps.
+- **Curve inventory and coverage:** records each mnemonic, unit, valid depth range and missing gaps inside the logged interval.
+- **Numerical screening:** separates hard validity problems from unusual values that require review.
+- **Borehole condition:** compares caliper (`CALI`) with nominal bit size (`BS`) to identify approximately on-gauge, enlarged, under-gauge and major mismatch intervals.
+- **Density reliability:** combines borehole condition, bulk-density correction (`DRHO`) and `RHOB` screening.
+- **Density–neutron consistency:** separates passed-QC points from measurements affected by borehole or density concerns before any gas or lithology interpretation.
+- **Resistivity duplication:** identifies exact and near-duplicate resistivity curves so repeated signals are not treated as independent evidence.
+- **Interpretation readiness:** marks rows suitable for later shale-volume, porosity and saturation calculations.
 
-**Borehole condition (CALI vs. BS).**
-The caliper log measures the actual hole diameter; BS is the size the drill bit was supposed to cut. When they match closely, the hole is in good condition, and tools sitting against the borehole wall (density, PEF) are getting good contact.
-This notebook treats the hole as on-gauge within 0.5 inches, a standard practical tolerance for borehole quality screening. Beyond that, a wider hole suggests washout or caving, while a moderately narrower one suggests mudcake buildup or a tight, swelling formation.
-But a CALI reading more than 2 inches below BS is not considered mudcake. Mudcake builds up gradually; it doesn't cause a sudden jump of several inches. A gap that large is flagged separately as a likely section boundary, casing point, or bit-size change, rather than a borehole-quality issue. 
-In this well, checking that flag directly caught a cluster of rows near the top of the logged interval, which turned out to be a section transition where density logging hadn't started yet, not a tight hole.
+## QC visuals
 
+### Main log and density-reliability panel
 
-**Density correction (DRHO).**
-The density tool corrects for poor borehole contact, and the magnitude of that correction indicates how much to trust the reading. Asquith (Asquith & Gibson, 1982) treats DRHO above 0.20 g/cm3 as the threshold for an unreliable reading.
-This notebook sets a stricter caution threshold at 0.10 g/cm3, with 0.15 g/cm3 indicating strong concern. The stricter threshold was chosen deliberately because no core or mud report is available for this well to confirm hole condition. Therefore, the safer assumption is to flag earlier rather than later.
+![Well-log QC overview](images/qc_overview_log_panel.png)
 
+This panel shows where QC concerns occur with depth and whether CALI, BS, RHOB, DRHO, NPHI, GR and RT respond together.
 
-**Photoelectric factor (PEF).**
-PEF identifies rock type almost independently of porosity, making it useful for lithology. But it is just as sensitive to borehole contact as density. 
-PEF has one more weakness: barite, a common heavy mud additive, has a photoelectric factor of roughly 267, compared with about 1.8 for quartz, 5 for calcite, and 3 for dolomite. 
-Even a small amount in the mudcake changes the rock signal. Naturally occurring heavy minerals like pyrite or siderite can push PEF higher too.
-The mud system used in this well is not documented in the file. To avoid guessing, this notebook flags any PEF reading above 10 b/e, a level no common clean reservoir lithology reaches on its own. This flag exists specifically to compensate for not knowing the mud type, not to diagnose the cause.
+### Density–neutron QC diagnostic
 
+![Density-neutron QC crossplot](images/density_neutron_qc_crossplot.png)
 
-**Resistivity curve duplication.**
-The file contains 7 resistivity-labeled logs. Several are repeated or nearly identical outputs from the same induction tool measured at different borehole distances. 
-Logs RPCEHM and RT, for example, correlate at 1.000, an exact match.
-Not all 7 are independent measurements. The notebook checks every pair against each other to prevent the same signal from being mistaken for 6 separate pieces of evidence.
+The crossplot is used as a QC diagnostic only. A point that passes QC remains a geological or fluid candidate; it is not automatically interpreted as gas.
 
+## Important technical decisions
 
-## How (Workflow)
+The thresholds in this notebook are **documented screening assumptions**, not universal geological cut-offs. They create review flags and do not automatically remove data.
 
-```mermaid
-flowchart TD
-    A[Load LAS file] --> B[make a copy of raw log: raw_df vs. qc_df]
-    B --> C[Check well info & depth continuity]
-    C --> D[Catalogue the curves, units & coverage]
-    D --> E[Screen ranges & local spikes]
-    E --> F[Borehole condition & density reliability]
-    F --> G[Density-neutron qc diagnostic]
-    G --> H[Resistivity curve comparison]
-    H --> I[Flag interpretation-ready rows]
-    I --> J[Export qc results & summary]
+| Check | Screening logic |
+|---|---|
+| Approximately on gauge | `abs(CALI - BS) <= 0.50 in` |
+| Major CALI–BS mismatch | more than 2.00 in below nominal bit size |
+| DRHO caution | `abs(DRHO) > 0.10 g/cm³` |
+| Strong DRHO concern | `abs(DRHO) > 0.15 g/cm³` |
+| Main resistivity input | `RT`, after duplicate-curve comparison |
+
+The 0.50-inch borehole tolerance is an analyst-selected first-pass screening band. The 96 major CALI–BS mismatches occur near a hole-section transition and are carried forward as review flags rather than being labelled automatically as mudcake or washout.
+
+## Main finding
+
+The QC workflow found that the main overlapping petrophysical interval is generally reliable:
+
+- 10,018 rows contain the four required interpretation curves.
+- 10,007 of those rows pass the current interpretation-readiness screen.
+- Only 11 density samples require caution.
+- `RT` and `RPCEHM` are exact duplicates; additional resistivity curves are also near-duplicates or effectively the same response.
+
+This prevents duplicated curves and borehole-affected measurements from silently influencing the later formation evaluation.
+
+## Repository contents
+
+```text
+automated-well-log-qc-formation-evaluation/
+├── README.md
+├── notebooks/
+│   └── 01_well_log_data_loading_and_qc.ipynb
+├── images/
+│   ├── qc_overview_log_panel.png
+│   └── density_neutron_qc_crossplot.png
+├── results/
+│   ├── well_log_qc_flagged.csv
+│   ├── formation_evaluation_input.csv
+│   ├── curve_inventory_and_coverage.csv
+│   └── qc_answers_summary.csv
+└── requirements.txt
 ```
-            A Simple Workflow 
-
-I supervised the petrophysics and clarified what mattered, what each measured threshold should be and why, and what a passing or failing qc flag should mean, as outlined in the section above. 
-
-Claude (Anthropic) wrote the Python code implementing that logic, which was faster than building and debugging it manually.
-
-Every result was checked against the actual well data. This flagged functions such as “make_nullable_boolean_flag” that were defined twice in separate cells, as well as two variables from earlier revisions that were no longer used anywhere. 
-These errors were corrected, and the notebook was re-run each time to confirm that the qc conclusions remained unchanged.
-The energy industry has become increasingly open to embedding AI directly into subsurface workflows, for example, among companies on the Norwegian Continental Shelf (NCS). 
-This project reflects the same line: AI accelerates implementation, while the petrophysical judgment behind it remains human and accountable.
-
-
-## Results
-
-10,007 of 34,861 depth rows passed full QC and are marked interpretation-ready. The 10,007 rows span 2,605 to 3,606.7 metres. 
-Every other row carries its original data; nothing was deleted, only flagged for visualization.
-
-## Data
-
-Equinor's Volve field dataset, released under CC BY-NC-SA 4.0.
 
 ## How to run
 
-Requires Python with `lasio`, `pandas`, `numpy`, and `matplotlib`. Open 
-the notebook and run all cells from top to bottom.
+1. Install the required packages:
+
+```bash
+pip install lasio pandas numpy matplotlib
+```
+
+2. Place the Volve LAS input file in the location specified in the notebook.
+3. Open `notebooks/01_well_log_data_loading_and_qc.ipynb`.
+4. Run all cells from top to bottom.
+
+## Data
+
+The project uses Equinor's open Volve dataset for well 15/9-F-1. Follow Equinor's data terms and attribution requirements when downloading, using or redistributing the source data.
+
+The raw LAS file is not included in this repository. The `data/README.md` file should provide the official source and setup instructions.
+
+## Connection to my MSc work
+
+My MSc thesis at NTNU integrated petrophysical interpretation, core description, seismic data, geological modelling and reservoir simulation for the Nise Formation on the Norwegian Continental Shelf.
+
+The thesis interpretation was completed primarily in Interactive Petrophysics. This portfolio project rebuilds the QC stage in Python using shareable Volve data, making the checks reproducible, auditable and reusable.
+
+## Scope and limitations
+
+- This repository currently covers **data loading and well-log QC**.
+- Formation evaluation is the next notebook and will calculate shale volume, porosity, water saturation, net reservoir and possible pay.
+- The LAS file is a composite dataset with limited information on exact tool models, mud system and environmental-correction history.
+- QC flags indicate confidence and review priority; they do not prove lithology, fluid type or commercial pay.
