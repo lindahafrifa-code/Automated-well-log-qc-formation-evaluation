@@ -133,6 +133,9 @@ My MSc thesis at NTNU integrated petrophysical interpretation, core description,
 The thesis interpretation was completed primarily in Interactive Petrophysics. 
 This portfolio project rebuilds the QC stage in Python using Volve data, making the checks reproducible, auditable and reusable.
 
+**Related project:**  
+[MSc Thesis Repository — Nise Formation Reservoir Characterization]((https://github.com/lindahafrifa-code/Nise-Formation-Reservoir-Characterization-and-Flow-Simulation))
+
 ## Scope and limitations
 
 - This repository currently covers **data loading and well-log QC**.
