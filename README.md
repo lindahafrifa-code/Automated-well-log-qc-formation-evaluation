@@ -82,6 +82,18 @@ The QC workflow found that the main overlapping petrophysical interval, with the
 
 This prevents duplicated curves and borehole-affected measurements from silently influencing the later formation evaluation.
 
+## AI-assisted development and technical ownership
+
+I used generative AI as a coding assistant to accelerate the Python implementation, debugging and code review.
+
+I remained responsible for the petrophysical workflow. I defined all the QC questions, selected and documented the screening assumptions,
+reviewed the generated code, checked the results against the original well data and decided what each QC flag meant.
+
+During validation, I identified and corrected a duplicated helper function and removed unused variables left from earlier revisions.
+I then re-ran the complete notebook to confirm that these corrections did not change the QC conclusions.
+
+AI accelerated the implementation. The petrophysical judgement, validation and final technical decisions remained mine.
+
 ## Repository contents
 
 ```text
