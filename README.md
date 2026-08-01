@@ -58,7 +58,8 @@ The crossplot is used as a QC diagnostic only. A point that passes QC remains a 
 
 ## Important technical decisions
 
-The thresholds in this notebook are **documented screening assumptions**, not universal geological cut-offs. They create review flags and do not automatically remove data.
+The thresholds in this notebook are **documented screening assumptions** , not universal geological cut-offs (example Asquith & Gibosn (1982)).
+They create review flags and do not automatically remove data.
 
 | Check | Screening logic |
 |---|---|
@@ -82,17 +83,17 @@ The QC workflow found that the main overlapping petrophysical interval, with the
 
 This prevents duplicated curves and borehole-affected measurements from silently influencing the later formation evaluation.
 
-## AI-assisted development and technical ownership
+## Technical ownership and AI-assistance
 
-I used generative AI as a coding assistant to accelerate the Python implementation, debugging and code review.
+I used generative AI to speed up the Python coding,debugging, and code review.
 
-I remained responsible for the petrophysical workflow. I defined all the QC questions, selected and documented the screening assumptions,
-reviewed the generated code, checked the results against the original well data and decided what each QC flag meant.
+I owned the petrophysics: I defined the QC questions, set and documented every threshold,
+reviewed the generated code, checked results against the real well data, and decided what each flag meant.
 
-During validation, I identified and corrected a duplicated helper function and removed unused variables left from earlier revisions.
-I then re-ran the complete notebook to confirm that these corrections did not change the QC conclusions.
+While reviewing, functions like, `make_nullable_boolean_flag`, were defined twice by mistake, plus three unused leftover variables.
+I fixed these and re-ran the notebook each time to confirm nothing changed.
 
-AI accelerated the implementation. The petrophysical judgement, validation and final technical decisions remained mine.
+The petrophysics, domain logic, and every final decision were mine. AI sped up the build.
 
 ## Repository contents
 
@@ -154,3 +155,6 @@ This portfolio project rebuilds the QC stage in Python using Volve data, making 
 - Formation evaluation is the next notebook and will calculate shale volume, porosity, water saturation, net reservoir and possible pay.
 - The LAS file was a composite dataset with limited information on exact tool models, mud system and environmental-correction history.
 - QC flags indicate confidence and review priority; they do not prove lithology, fluid type or commercial pay.
+
+
+Asquith, G. B., & Gibosn, C. R. (1982). Basic Well Log Analysis for Geologists. American Association of Petroleum Geologists. https://doi.org/10.1306/Mth3425
