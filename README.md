@@ -1,8 +1,17 @@
-# Automated Well-Log QC in Python
+# Automated Well-Log QC and Formation Evaluation in Python
 
-**Volve field, well 15/9-F-1 | Open North Sea data**
+**Volve field | Open North Sea data**
 
-A reproducible Python workflow that checks whether well-log measurements are reliable enough for petrophysical interpretation before calculating porosity, water saturation, reservoir quality or pay.
+A two-notebook Python workflow that takes well-log data from quality control (QC) into screening formation evaluation. 
+The automation workflow is built to:
+  1. check whether the measurements are reliable. stuck tools or readings, missing numbers, nulls, blanks, depth rows, etc.
+  2. calculates the petrophysical parameters. shale volume, porosity and water saturation, identifies possible reservoir and possible pay
+  3. show how sensitive the answer is to interpretation assumptions. risk and sensitivity analysis. 
+
+> In petrophysics a correct equation can produce a wrong answer when the input data are poor or the interpretation assumptions are hidden.
+
+---
+
 
 ## Why this project matters
 
