@@ -374,7 +374,7 @@ Review Equinor’s current terms before downloading, using or redistributing the
 ---
 
 **Author:** Linda Afrifa  
-Petroleum Geoscientist | Petrophysics | Python | Subsurface Data
+Petroleum Geoscientist | Petrophysics | Python | Subsurface Data |  [LinkedIn](https://www.linkedin.com/in/linda-afrifa)
 
 
 
