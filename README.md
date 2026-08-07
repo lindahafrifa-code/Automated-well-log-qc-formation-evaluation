@@ -45,7 +45,7 @@ By answering for example:
 | Curves loaded | 21 |
 | Rows containing GR, RHOB, NPHI and RT | 10,018 |
 | Rows marked interpretation-ready | 10,007 |
-| Main overlapping interval | 2,605.0–3,606.7 m |
+| Main overlapping interval | 2,605.0 – 3,606.7 m |
 | Density rows passing full QC | 10,028 |
 | Density rows requiring caution | 11 |
 | Strong density-QC concerns | 0 |
@@ -165,7 +165,7 @@ Interpreted logs, interval summaries and sensitivity results
 
 ## 4. Interval selection
 
-- Reviews log character in depth bins and selects the 2,770.0–3,270.0 m working interval
+- Reviews log character in depth bins and selects the 2,770.0 – 3,270.0 m working interval
 - Separates a cleaner upper zone from a shalier lower zone and Keeps the interval decision visible and reproducible
 
 ## 5. Formation evaluation
@@ -235,15 +235,15 @@ The crossplots do not follow a simple pure-quartz response. They are consistent 
 
 ---
 
-# Other Important assumptions
+# Other Assumptions
 
 | Item | Working choice | Treatment |
 |---|---|---|
-| Interpretation interval | 2,770.0–3,270.0 m | Log-defined; not a confirmed formation interval |
+| Interpretation interval | 2,770.0 – 3,270.0 m | Log-defined; not a confirmed formation interval |
 | Zone boundary | 3,105.0 m | Based on GR and RT character |
 | GR clean reference | 5th percentile | Derived from the selected interval |
 | GR shale reference | 95th percentile | Derived from the selected interval |
-| VSH model | Linear `VSH = IGR` | Clipped to 0–1 |
+| VSH model | Linear `VSH = IGR` | Clipped to 0 – 1 |
 | Matrix density | 2.65 g/cm³ | Working baseline; 2.68 and 2.71 tested |
 | Fluid density | 1.00 g/cm³ | Not verified from a fluid sample |
 | `Rw` | 0.0085 ohm·m | Back-solved from 2,750.0–2,760.0 m assuming `Sw = 1` |
@@ -367,8 +367,6 @@ Review Equinor’s current terms before downloading, using or redistributing the
 
 - Asquith, G. B. & Gibson, C. R. (1982). *Basic Well Log Analysis for Geologists.*
 - American Association of Petroleum Geologists. https://doi.org/10.1306/Mth3425
-- Simandoux, P. (1963). Shaly-sand water-saturation model.
-- Winsauer, W. O. et al. (1952). Humble parameters used in the Archie calculation.
 - Norwegian Offshore Directorate formation descriptions used as regional geological context.
 
 ---
