@@ -37,7 +37,7 @@ By answering for example:
 
 # Main Results
 
-## Notebook 1 — Well-log QC
+## Notebook 1: Well-log QC
 
 | Result | Value |
 |---|---:|
@@ -56,7 +56,7 @@ Other resistivity curves show near-duplicate responses. This prevented repeated 
 
 ---
 
-## Notebook 2 — Formation evaluation
+## Notebook 2: Formation evaluation
  
 A **chosen log-defined interval from 2,770.0 to 3,270.0 m**, (5,001 rows) was evaluated.
 
